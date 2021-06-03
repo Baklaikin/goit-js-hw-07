@@ -12,3 +12,20 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+const gallery = document.querySelector('#gallery');
+const items = [];
+
+const makrUpEl = images.forEach(image => {
+  const item = document.createElement('li');
+  item.insertAdjacentHTML('afterbegin', '<img>');
+
+  const img = item.firstChild;
+  img.setAttribute('src', image.url);
+  img.setAttribute('alt', image.alt)
+
+  items.push(item);
+});
+
+gallery.append(...items);
+console.log(gallery);
