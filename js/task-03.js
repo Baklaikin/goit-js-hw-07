@@ -13,19 +13,10 @@ const images = [
   },
 ];
 
-const gallery = document.querySelector('#gallery');
-const items = [];
+const gallery = document.querySelector("#gallery");
+const gallerySet = ({ url, alt }) => {
+  return `<li><img src="${url}" alt="${alt}" width = 800></li>`
+}
+const pictures = images.map(gallerySet).join('');
+gallery.insertAdjacentHTML('afterbegin', pictures);
 
-const makrUpEl = images.forEach(image => {
-  const item = document.createElement('li');
-  item.insertAdjacentHTML('afterbegin', '<img>');
-
-  const img = item.firstChild;
-  img.setAttribute('src', image.url);
-  img.setAttribute('alt', image.alt)
-
-  items.push(item);
-});
-
-gallery.append(...items);
-console.log(gallery);
